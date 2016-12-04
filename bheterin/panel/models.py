@@ -1,9 +1,8 @@
 from django.db import models
-
+import datetime
 
 """
 hay que hacer herencia  con dueño y veterinario hacia ->>>>>> persona
-
 
 
 por ahora esto funciona pero  no se ve muy LINDO
@@ -40,7 +39,16 @@ class Veterinario(models.Model):
     direccion=models.CharField(max_length=50)
     correo=models.EmailField(blank=True)
     telefono=models.CharField(max_length=50)
-    def __str__(self):
-        return self.rutveterinario
+
+
+class Diagnostico(models.Model):
+    iddiagnostico=models.IntegerField(primary_key=True) #PK
+    descripcion=models.CharField(max_length=500)
+    fecha=models.DateTimeField(default=datetime.datetime.today() , blank=True)
+    idmascota=models.ForeignKey(Mascota,on_delete=models.CASCADE)#fk idmascota
+    rutdueño=models.ForeignKey(Dueño,on_delete=models.CASCADE)#fk rutdueño
+    rutveterinario=models.ForeignKey(Veterinario,on_delete=models.CASCADE)#fk rutveterinario
+
+
 
 

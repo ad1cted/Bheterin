@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Mascota,Dueño,Veterinario
+from .models import Mascota,Dueño,Veterinario,Diagnostico
 
 
 
@@ -8,3 +8,4 @@ from .models import Mascota,Dueño,Veterinario
 admin.site.register(Veterinario)
 admin.site.register(Dueño)
 admin.site.register(Mascota)
+admin.site.register(Diagnostico)
