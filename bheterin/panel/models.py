@@ -1,8 +1,9 @@
+# -*- coding: utf-8 -*-
 from django.db import models
 import datetime
 
 """
-hay que hacer herencia  con dueño y veterinario hacia ->>>>>> persona
+hay que hacer herencia  con dueno y veterinario hacia ->>>>>> persona
 
 
 por ahora esto funciona pero  no se ve muy LINDO
@@ -12,9 +13,9 @@ por ahora esto funciona pero  no se ve muy LINDO
 
 #modelos
 
-#modelo dueño
-class Dueño(models.Model):
-    rutdueño=models.IntegerField(primary_key=True)
+#modelo dueno
+class Dueno(models.Model):
+    rutdueno=models.IntegerField(primary_key=True)
     nombre=models.CharField(max_length=50)
     direccion=models.CharField(max_length=50)
     correo=models.EmailField(blank=True)
@@ -28,7 +29,7 @@ class Mascota(models.Model):
     nombre=models.CharField(max_length=50) #nombre de la mascota como maximo 50 caracteres
     edad=models.IntegerField() # edad de tipo int
     peso=models.FloatField() #peso flotante
-    rutdueño=models.ForeignKey(Dueño,on_delete=models.CASCADE)
+    rutdueno=models.ForeignKey(Dueno,on_delete=models.CASCADE)
 
 
 
@@ -46,9 +47,5 @@ class Diagnostico(models.Model):
     descripcion=models.CharField(max_length=500)
     fecha=models.DateTimeField(default=datetime.datetime.today() , blank=True)
     idmascota=models.ForeignKey(Mascota,on_delete=models.CASCADE)#fk idmascota
-    rutdueño=models.ForeignKey(Dueño,on_delete=models.CASCADE)#fk rutdueño
+    rutdueno=models.ForeignKey(Dueno,on_delete=models.CASCADE)#fk rutdueno
     rutveterinario=models.ForeignKey(Veterinario,on_delete=models.CASCADE)#fk rutveterinario
-
-
-
-
