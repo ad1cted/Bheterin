@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block main_content %}
+<div class="container">
+    <div class="jumbotron text-center">
+        <h1>Hola!</h1>
+        <p>No se que poner aqui asi que pondre esto</p>
+        <a href="#" class="btn btn-primary">boton 1</a>
+        <a href="#" class="btn btn-success">boton 2</a>
+    </div>
+    <div class="row">
+        <!--clase para manejar lascolumna de al medio-->
+        <div class="col-sm-4">
+            <a href="#" class="thumbnail">
+                <img src="https://i.ytimg.com/vi/Z3W0-sjLfMM/maxresdefault.jpg" alt="rear side logo">
+            </a>
+            <h3>Tema 1</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <a href="#" class="btn btn-danger">Ver</a>
+        </div>
+        <div class="col-sm-4">
+            <a href="#" class="thumbnail">
+                <img src="http://vignette1.wikia.nocookie.net/sanicsource/images/9/97/Doge.jpg/revision/latest?cb=20160112233015" alt="front logo">
+            </a>
+            <h3>Tema 2</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <a href="#" class="btn btn-danger">Ver</a>
+        </div>
+        <div class="col-sm-4">
+            <a href="#" class="thumbnail">
+                <img src="http://i2.wp.com/disinfo.com/wp-content/uploads/2016/02/Cat-Cucumber.jpg?resize=777%2C400" alt="side logo">
+            </a>
+            <h3>Tema 3</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <a href="#" class="btn btn-danger">Ver</a>
+        </div>
+    </div>
+{% endblock %}
