@@ -1,32 +1,34 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block main_content %}
+<script src="https://use.fontawesome.com/54a3a930a8.js"></script>
+<h1 style="padding-left:100px !important">Agregar Veterinario</h1>
+
 <div class="form-body">
-        <h3>Valores parametrizables</h3>
         <!-- BEGIN FORM-->
         <form action="valores_parametrizables_edit_save" class="horizontal-form" method="post" id="formulario">
-            <div class="form-body">
-                <h4 class="form-section">Editar valores parametrizables</h4>
+            <div class="form-body" style="padding-left:100px !important">
+
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-7">
                         <div class="form-group">
-                            <label class="control-label">Deuda Mínima</label>
+                            <label class="control-label">RUT</label>
                             <div class="input-group">
                                 <div class="input-group-addon">
-                                    <i class="fa fa-usd custom"></i>
+                                    <i class="fa fa-id-card"></i>
                                 </div>
-                                <input type="text" id="deuda_minima" name="deuda_minima" class="form-control" value="">
+                                <input type="text" id="rut_veterinario" name="rut_veterinario" class="form-control" value="">
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-7">
                         <div class="form-group">
-                            <label class="control-label">Monto Mínimo Desbloqueo</label>
+                            <label class="control-label">Nombre</label>
                             <div class="input-group">
                                 <div class="input-group-addon">
-                                    <span class="fa fa-usd custom"></span>
+                                    <i class="fa fa-etsy"></i>
                                 </div>
-                                <input type="text" id="monto_minimo_desbloqueo" name="monto_minimo_desbloqueo" class="form-control" value="" data-error="#errMMD">
+                                <input type="text" id="nombre_veterinario" name="nombre_veterinario" class="form-control" value="" data-error="#errMMD">
                             </div>
                         </div>
                         <div class="errorTxt">
@@ -35,28 +37,28 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-7">
                         <div class="form-group">
-                            <label class="control-label">Periodo Minimo Mandato</label>
+                            <label class="control-label">Dirección</label>
                             <div class="input-group">
                                 <div class="input-group-addon">
-                                    N°
+                                    <i class="fa fa-map-marker"></i>
                                 </div>
-                                <input type="text" id="periodo_minimo_mandato" name="periodo_minimo_mandato" class="form-control" value="" data-error="#errPMM">
+                                <input type="text" id="direccion_veterinario" name="direccion_veterinario" class="form-control" value="" data-error="#errPMM">
                             </div>
                             <div class="errorTxt">
                                 <span id="errPMM"></span>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-7">
                         <div class="form-group">
-                            <label class="control-label">Numero Máximo de Cuotas</label>
+                            <label class="control-label">Correo</label>
                             <div class="input-group">
                                 <div class="input-group-addon">
-                                    N°
+                                    <i class="fa fa-at"></i>
                                 </div>
-                                <input type="text" id="numero_maximo_cuotas" name="numero_maximo_cuotas" class="form-control" value="" data-error="#errNMC">
+                                <input type="text" id="correo_veterinario" name="correo_veterinario" class="form-control" value="" data-error="#errNMC">
                             </div>
                             <div class="errorTxt">
                                 <span id="errNMC"></span>
@@ -65,20 +67,21 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-7">
                         <div class="form-group">
-                            <label class="control-label">Periodo Limite Bloqueo</label>
+                            <label class="control-label">Teléfono</label>
                             <div class="input-group">
                                 <div class="input-group-addon">
-                                    N°
+                                    <i class="fa fa-mobile"></i>
                                 </div>
-                                <input type="text" id="periodo_limite_bloqueo" name="periodo_limite_bloqueo" class="form-control" value="" data-error="#errPLB">
+                                <input type="text" id="tel_veterinario" name="tel_veterinario" class="form-control" value="" data-error="#errPLB">
                             </div>
                             <div class="errorTxt">
                                 <span id="errPLB"></span>
                             </div>
                         </div>
                     </div>
+                    <!--
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="control-label">Valor Máximo de Sobretiempo</label>
@@ -93,6 +96,7 @@
                             <span id="errMdS"></span>
                         </div>
                     </div>
+                -->
                 </div>
                 <div class="form-actions nobg fluid">
                     <input type="hidden" name="_csrf_token" value="">
@@ -129,7 +133,7 @@
     });
     $(document).ready(function() {
         //hace que no se puedan ingresar campos que no sean numericos en todos los campos
-        $("#deuda_minima").bind("keydown", function(event) {
+        $("#rut_veterinario").bind("keydown", function(event) {
             if (event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || event.keyCode == 13 || (event.keyCode == 65 && event.ctrlKey === true) || (event.keyCode >= 35 && event.keyCode <= 39)) {
                 return;
             } else {
@@ -138,7 +142,7 @@
                 }
             }
         });
-        $("#periodo_limite_bloqueo").bind("keydown", function(event) {
+        $("#nombre_veterinario").bind("keydown", function(event) {
             if (event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || event.keyCode == 13 || (event.keyCode == 65 && event.ctrlKey === true) || event.keyCode == 75 || (event.keyCode >= 35 && event.keyCode <= 39)) {
                 return;
             } else {
@@ -147,7 +151,7 @@
                 }
             }
         });
-        $("#periodo_minimo_mandato").bind("keydown", function(event) {
+        $("#direccion_veterinario").bind("keydown", function(event) {
             if (event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || event.keyCode == 13 || (event.keyCode == 65 && event.ctrlKey === true) || (event.keyCode >= 35 && event.keyCode <= 39)) {
                 return;
             } else {
@@ -156,7 +160,7 @@
                 }
             }
         });
-        $("#numero_maximo_cuotas").bind("keydown", function(event) {
+        $("#correo_veterinario").bind("keydown", function(event) {
             if (event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || event.keyCode == 13 || (event.keyCode == 65 && event.ctrlKey === true) || (event.keyCode >= 35 && event.keyCode <= 39)) {
                 return;
             } else {
@@ -165,7 +169,7 @@
                 }
             }
         });
-        $("#monto_minimo_desbloqueo").bind("keydown", function(event) {
+        $("#tel_veterinario").bind("keydown", function(event) {
             if (event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || event.keyCode == 13 || (event.keyCode == 65 && event.ctrlKey === true) || (event.keyCode >= 35 && event.keyCode <= 39)) {
                 return;
             } else {
@@ -174,56 +178,41 @@
                 }
             }
             });
-        $("#monto_maximo_sobretiempos").bind("keydown", function(event) {
-            if (event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || event.keyCode == 13 || (event.keyCode == 65 && event.ctrlKey === true) || (event.keyCode >= 35 && event.keyCode <= 39)) {
-                return;
-            } else {
-                if (event.shiftKey || (event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105)) {
-                    event.preventDefault();
-                }
-            }
-        });
         //Valida el submit para rut y dv.
         $("#formulario").validate({
             rules: {
-                deuda_minima: {
+                rut_veterinario: {
                     required: true
                 },
-                periodo_limite_bloqueo: {
+                nombre_veterinario: {
                     required: true
                 },
-                periodo_minimo_mandato: {
+                direccion_veterinario: {
                     required: true
                 },
-                numero_maximo_cuotas: {
+                correo_veterinario: {
                     required: true
                 },
-                monto_minimo_desbloqueo: {
+                tel_veterinario: {
                     required: true
                 },
-                monto_maximo_sobretiempos: {
-                    required: true
-                }
             },
             messages: {
-                deuda_minima: {
-                    required: "El campo Deuda minima es obligatorio"
+                rut_veterinario: {
+                    required: "El campo ID mascota es obligatorio"
                 },
-                periodo_limite_bloqueo: {
-                    required: "El campo periodo limite bloqueo es obligatorio"
+                nombre_veterinario: {
+                    required: "El campo nombre es obligatorio"
                 },
-                periodo_minimo_mandato: {
-                    required: "El campo Periodo Minimo Mandato es obligatorio"
+                direccion_veterinario: {
+                    required: "El campo edad es obligatorio"
                 },
-                numero_maximo_cuotas: {
-                    required: "El campo Numero Maximo de Cuotas es obligatorio"
+                correo_veterinario: {
+                    required: "El campo peso es obligatorio"
                 },
-                monto_minimo_desbloqueo: {
-                    required: "El campo Monto Minimo Desbloqueo es obligatorio"
+                tel_veterinario: {
+                    required: "El campo rut dueño es obligatorio"
                 },
-                monto_maximo_sobretiempos: {
-                    required: "El campo Valor Máximo de Sobretiempo es obligatorio"
-                }
             }
         });
     });

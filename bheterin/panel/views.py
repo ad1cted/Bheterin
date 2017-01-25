@@ -44,5 +44,3 @@ def add_veterinario(request):
 def panel_veterinario(request):
     template = loader.get_template("Veterinarios/panel_veterinario.html")
     return HttpResponse(template.render(request))
-
-def save_veterinario(request):
