@@ -1,7 +1,8 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse,HttpResponseRedirect
+from django.shortcuts import render_to_response
 from django.template import loader
-from django.db import models
+from django.db import connection
 
 # Create your views here.
 
@@ -46,3 +47,16 @@ def panel_veterinario(request):
     return HttpResponse(template.render(request))
 
 def save_veterinario(request):
+    username = request.GET.get('periodo_minimo_mandato', '')
+    email = request.GET.get('periodo_minimo_mandato', '')
+    password = request.GET.get('periodo_minimo_mandato', '')
+    cursor = connection.cursor()
+    cursor.execute("SELECT * FROM panel_veterinario")
+    holi = cursor.fetchall()
+    #cursor.execute("INSERT INTO panel_veterinario (rutveterinario,nombre,direccion,correo,telefono) VALUES (%s,%s,%s,%s,%s)", [18407377,username,username,username,username])
+    file = open('myfile.dat', 'w+')
+    file.write(str(holi))
+
+
+
+    return HttpResponseRedirect("/veterinarios/add_veterinario")
