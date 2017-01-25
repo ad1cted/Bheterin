@@ -104,126 +104,128 @@
             </form>
             <!-- END FORM-->
         </div>
-      <script>
-            //Agregar la clase has-error y has-success al form-group como default en jQuery.validator .
-            $.validator.setDefaults({
-                highlight: function(element) {
-                    $(element).closest('.form-group').removeClass('has-success');
-                    $(element).closest('.form-group').addClass('has-error');
-                },
-                unhighlight: function(element) {
-                    $(element).closest('.form-group').removeClass('has-error');
-                    $(element).closest('.form-group').addClass('has-success');
-                },
-                errorElement: 'span',
-                errorClass: 'help-block',
-                errorPlacement: function(error, element) {
-                    if (element.parent('.input-group').length) {
-                        error.insertAfter(element.parent());
-                    } else {
-                        error.insertAfter(element);
-                    }
+{% endblock %}
+{% block script %}
+<script>
+    //Agregar la clase has-error y has-success al form-group como default en jQuery.validator .
+    $.validator.setDefaults({
+        highlight: function(element) {
+            $(element).closest('.form-group').removeClass('has-success');
+            $(element).closest('.form-group').addClass('has-error');
+        },
+        unhighlight: function(element) {
+            $(element).closest('.form-group').removeClass('has-error');
+            $(element).closest('.form-group').addClass('has-success');
+        },
+        errorElement: 'span',
+        errorClass: 'help-block',
+        errorPlacement: function(error, element) {
+            if (element.parent('.input-group').length) {
+                error.insertAfter(element.parent());
+            } else {
+                error.insertAfter(element);
+            }
+        }
+    });
+    $(document).ready(function() {
+        //hace que no se puedan ingresar campos que no sean numericos en todos los campos
+        $("#deuda_minima").bind("keydown", function(event) {
+            if (event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || event.keyCode == 13 || (event.keyCode == 65 && event.ctrlKey === true) || (event.keyCode >= 35 && event.keyCode <= 39)) {
+                return;
+            } else {
+                if (event.shiftKey || (event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105)) {
+                    event.preventDefault();
                 }
+            }
+        });
+        $("#periodo_limite_bloqueo").bind("keydown", function(event) {
+            if (event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || event.keyCode == 13 || (event.keyCode == 65 && event.ctrlKey === true) || event.keyCode == 75 || (event.keyCode >= 35 && event.keyCode <= 39)) {
+                return;
+            } else {
+                if (event.shiftKey || (event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105)) {
+                    event.preventDefault();
+                }
+            }
+        });
+        $("#periodo_minimo_mandato").bind("keydown", function(event) {
+            if (event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || event.keyCode == 13 || (event.keyCode == 65 && event.ctrlKey === true) || (event.keyCode >= 35 && event.keyCode <= 39)) {
+                return;
+            } else {
+                if (event.shiftKey || (event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105)) {
+                    event.preventDefault();
+                }
+            }
+        });
+        $("#numero_maximo_cuotas").bind("keydown", function(event) {
+            if (event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || event.keyCode == 13 || (event.keyCode == 65 && event.ctrlKey === true) || (event.keyCode >= 35 && event.keyCode <= 39)) {
+                return;
+            } else {
+                if (event.shiftKey || (event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105)) {
+                    event.preventDefault();
+                }
+            }
+        });
+        $("#monto_minimo_desbloqueo").bind("keydown", function(event) {
+            if (event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || event.keyCode == 13 || (event.keyCode == 65 && event.ctrlKey === true) || (event.keyCode >= 35 && event.keyCode <= 39)) {
+                return;
+            } else {
+                if (event.shiftKey || (event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105)) {
+                    event.preventDefault();
+                }
+            }
             });
-            $(document).ready(function() {
-                //hace que no se puedan ingresar campos que no sean numericos en todos los campos
-                $("#deuda_minima").bind("keydown", function(event) {
-                    if (event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || event.keyCode == 13 || (event.keyCode == 65 && event.ctrlKey === true) || (event.keyCode >= 35 && event.keyCode <= 39)) {
-                        return;
-                    } else {
-                        if (event.shiftKey || (event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105)) {
-                            event.preventDefault();
-                        }
-                    }
-                });
-                $("#periodo_limite_bloqueo").bind("keydown", function(event) {
-                    if (event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || event.keyCode == 13 || (event.keyCode == 65 && event.ctrlKey === true) || event.keyCode == 75 || (event.keyCode >= 35 && event.keyCode <= 39)) {
-                        return;
-                    } else {
-                        if (event.shiftKey || (event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105)) {
-                            event.preventDefault();
-                        }
-                    }
-                });
-                $("#periodo_minimo_mandato").bind("keydown", function(event) {
-                    if (event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || event.keyCode == 13 || (event.keyCode == 65 && event.ctrlKey === true) || (event.keyCode >= 35 && event.keyCode <= 39)) {
-                        return;
-                    } else {
-                        if (event.shiftKey || (event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105)) {
-                            event.preventDefault();
-                        }
-                    }
-                });
-                $("#numero_maximo_cuotas").bind("keydown", function(event) {
-                    if (event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || event.keyCode == 13 || (event.keyCode == 65 && event.ctrlKey === true) || (event.keyCode >= 35 && event.keyCode <= 39)) {
-                        return;
-                    } else {
-                        if (event.shiftKey || (event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105)) {
-                            event.preventDefault();
-                        }
-                    }
-                });
-                $("#monto_minimo_desbloqueo").bind("keydown", function(event) {
-                    if (event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || event.keyCode == 13 || (event.keyCode == 65 && event.ctrlKey === true) || (event.keyCode >= 35 && event.keyCode <= 39)) {
-                        return;
-                    } else {
-                        if (event.shiftKey || (event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105)) {
-                            event.preventDefault();
-                        }
-                    }
-                    });
-                $("#monto_maximo_sobretiempos").bind("keydown", function(event) {
-                    if (event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || event.keyCode == 13 || (event.keyCode == 65 && event.ctrlKey === true) || (event.keyCode >= 35 && event.keyCode <= 39)) {
-                        return;
-                    } else {
-                        if (event.shiftKey || (event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105)) {
-                            event.preventDefault();
-                        }
-                    }
-                });
-                //Valida el submit para rut y dv.
-                $("#formulario").validate({
-                    rules: {
-                        deuda_minima: {
-                            required: true
-                        },
-                        periodo_limite_bloqueo: {
-                            required: true
-                        },
-                        periodo_minimo_mandato: {
-                            required: true
-                        },
-                        numero_maximo_cuotas: {
-                            required: true
-                        },
-                        monto_minimo_desbloqueo: {
-                            required: true
-                        },
-                        monto_maximo_sobretiempos: {
-                            required: true
-                        }
-                    },
-                    messages: {
-                        deuda_minima: {
-                            required: "El campo Deuda minima es obligatorio"
-                        },
-                        periodo_limite_bloqueo: {
-                            required: "El campo periodo limite bloqueo es obligatorio"
-                        },
-                        periodo_minimo_mandato: {
-                            required: "El campo Periodo Minimo Mandato es obligatorio"
-                        },
-                        numero_maximo_cuotas: {
-                            required: "El campo Numero Maximo de Cuotas es obligatorio"
-                        },
-                        monto_minimo_desbloqueo: {
-                            required: "El campo Monto Minimo Desbloqueo es obligatorio"
-                        },
-                        monto_maximo_sobretiempos: {
-                            required: "El campo Valor Máximo de Sobretiempo es obligatorio"
-                        }
-                    }
-                });
-            });
-        </script>
+        $("#monto_maximo_sobretiempos").bind("keydown", function(event) {
+            if (event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || event.keyCode == 13 || (event.keyCode == 65 && event.ctrlKey === true) || (event.keyCode >= 35 && event.keyCode <= 39)) {
+                return;
+            } else {
+                if (event.shiftKey || (event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105)) {
+                    event.preventDefault();
+                }
+            }
+        });
+        //Valida el submit para rut y dv.
+        $("#formulario").validate({
+            rules: {
+                deuda_minima: {
+                    required: true
+                },
+                periodo_limite_bloqueo: {
+                    required: true
+                },
+                periodo_minimo_mandato: {
+                    required: true
+                },
+                numero_maximo_cuotas: {
+                    required: true
+                },
+                monto_minimo_desbloqueo: {
+                    required: true
+                },
+                monto_maximo_sobretiempos: {
+                    required: true
+                }
+            },
+            messages: {
+                deuda_minima: {
+                    required: "El campo Deuda minima es obligatorio"
+                },
+                periodo_limite_bloqueo: {
+                    required: "El campo periodo limite bloqueo es obligatorio"
+                },
+                periodo_minimo_mandato: {
+                    required: "El campo Periodo Minimo Mandato es obligatorio"
+                },
+                numero_maximo_cuotas: {
+                    required: "El campo Numero Maximo de Cuotas es obligatorio"
+                },
+                monto_minimo_desbloqueo: {
+                    required: "El campo Monto Minimo Desbloqueo es obligatorio"
+                },
+                monto_maximo_sobretiempos: {
+                    required: "El campo Valor Máximo de Sobretiempo es obligatorio"
+                }
+            }
+        });
+    });
+</script>
 {% endblock %}
