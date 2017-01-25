@@ -5,4 +5,5 @@ from . import views
 urlpatterns = [
        url(r'^add_mascota$', views.add_mascota, name="add_mascota"),
        url(r'^panel_mascota$', views.panel_mascota, name="panel_mascota"),
+       url(r'^save_mascota$', views.save_mascota, name="panel_mascota"),
       ]
