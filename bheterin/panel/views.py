@@ -46,6 +46,7 @@ def panel_veterinario(request):
     template = loader.get_template("Veterinarios/panel_veterinario.html")
     return HttpResponse(template.render(request))
 
+
 def save_veterinario(request):
     username = request.GET.get('periodo_minimo_mandato', '')
     email = request.GET.get('periodo_minimo_mandato', '')
