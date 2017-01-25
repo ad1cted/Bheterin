@@ -10,6 +10,7 @@ def index(request):
     template = loader.get_template("index.html")
     return HttpResponse(template.render(request))
 
+
 #views para consultas
 def pedir_hora(request):
     template = loader.get_template("Consultas/hora.html")
@@ -33,11 +34,15 @@ def panel_mascota(request):
     template = loader.get_template("Mascotas/panel_mascota.html")
     return HttpResponse(template.render(request))
 
+
+
 #views Veterinarios
-def add_mascota(request):
+def add_veterinario(request):
     template = loader.get_template("Veterinarios/add_veterinario.html")
     return HttpResponse(template.render(request))
 
-def panel_mascota(request):
+def panel_veterinario(request):
     template = loader.get_template("Veterinarios/panel_veterinario.html")
     return HttpResponse(template.render(request))
+
+def save_veterinario(request):
