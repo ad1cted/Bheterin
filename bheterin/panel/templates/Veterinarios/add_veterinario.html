@@ -1,5 +1,229 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block main_content %}
-<h1>add veterinario</h1>
+<div class="form-body">
+        <h3>Valores parametrizables</h3>
+        <!-- BEGIN FORM-->
+        <form action="valores_parametrizables_edit_save" class="horizontal-form" method="post" id="formulario">
+            <div class="form-body">
+                <h4 class="form-section">Editar valores parametrizables</h4>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">Deuda Mínima</label>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-usd custom"></i>
+                                </div>
+                                <input type="text" id="deuda_minima" name="deuda_minima" class="form-control" value="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">Monto Mínimo Desbloqueo</label>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <span class="fa fa-usd custom"></span>
+                                </div>
+                                <input type="text" id="monto_minimo_desbloqueo" name="monto_minimo_desbloqueo" class="form-control" value="" data-error="#errMMD">
+                            </div>
+                        </div>
+                        <div class="errorTxt">
+                            <span id="errMMD"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">Periodo Minimo Mandato</label>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    N°
+                                </div>
+                                <input type="text" id="periodo_minimo_mandato" name="periodo_minimo_mandato" class="form-control" value="" data-error="#errPMM">
+                            </div>
+                            <div class="errorTxt">
+                                <span id="errPMM"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">Numero Máximo de Cuotas</label>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    N°
+                                </div>
+                                <input type="text" id="numero_maximo_cuotas" name="numero_maximo_cuotas" class="form-control" value="" data-error="#errNMC">
+                            </div>
+                            <div class="errorTxt">
+                                <span id="errNMC"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">Periodo Limite Bloqueo</label>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    N°
+                                </div>
+                                <input type="text" id="periodo_limite_bloqueo" name="periodo_limite_bloqueo" class="form-control" value="" data-error="#errPLB">
+                            </div>
+                            <div class="errorTxt">
+                                <span id="errPLB"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">Valor Máximo de Sobretiempo</label>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <span class="fa fa-usd custom"></span>
+                                </div>
+                                <input type="text" id="monto_maximo_sobretiempos" name="monto_maximo_sobretiempos" class="form-control" value="" data-error="#errMdS">
+                            </div>
+                        </div>
+                        <div class="errorTxt">
+                            <span id="errMdS"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-actions nobg fluid">
+                    <input type="hidden" name="_csrf_token" value="">
+                    <button type="button" class="btn btn-default">Cancelar</button>
+                    <button type="submit" class="btn btn-info">
+                        <i class="fa fa-check"></i>
+                        Guardar</button>
+                </div>
+            </form>
+            <!-- END FORM-->
+        </div>
+      <script>
+            //Agregar la clase has-error y has-success al form-group como default en jQuery.validator .
+            $.validator.setDefaults({
+                highlight: function(element) {
+                    $(element).closest('.form-group').removeClass('has-success');
+                    $(element).closest('.form-group').addClass('has-error');
+                },
+                unhighlight: function(element) {
+                    $(element).closest('.form-group').removeClass('has-error');
+                    $(element).closest('.form-group').addClass('has-success');
+                },
+                errorElement: 'span',
+                errorClass: 'help-block',
+                errorPlacement: function(error, element) {
+                    if (element.parent('.input-group').length) {
+                        error.insertAfter(element.parent());
+                    } else {
+                        error.insertAfter(element);
+                    }
+                }
+            });
+            $(document).ready(function() {
+                //hace que no se puedan ingresar campos que no sean numericos en todos los campos
+                $("#deuda_minima").bind("keydown", function(event) {
+                    if (event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || event.keyCode == 13 || (event.keyCode == 65 && event.ctrlKey === true) || (event.keyCode >= 35 && event.keyCode <= 39)) {
+                        return;
+                    } else {
+                        if (event.shiftKey || (event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105)) {
+                            event.preventDefault();
+                        }
+                    }
+                });
+                $("#periodo_limite_bloqueo").bind("keydown", function(event) {
+                    if (event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || event.keyCode == 13 || (event.keyCode == 65 && event.ctrlKey === true) || event.keyCode == 75 || (event.keyCode >= 35 && event.keyCode <= 39)) {
+                        return;
+                    } else {
+                        if (event.shiftKey || (event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105)) {
+                            event.preventDefault();
+                        }
+                    }
+                });
+                $("#periodo_minimo_mandato").bind("keydown", function(event) {
+                    if (event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || event.keyCode == 13 || (event.keyCode == 65 && event.ctrlKey === true) || (event.keyCode >= 35 && event.keyCode <= 39)) {
+                        return;
+                    } else {
+                        if (event.shiftKey || (event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105)) {
+                            event.preventDefault();
+                        }
+                    }
+                });
+                $("#numero_maximo_cuotas").bind("keydown", function(event) {
+                    if (event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || event.keyCode == 13 || (event.keyCode == 65 && event.ctrlKey === true) || (event.keyCode >= 35 && event.keyCode <= 39)) {
+                        return;
+                    } else {
+                        if (event.shiftKey || (event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105)) {
+                            event.preventDefault();
+                        }
+                    }
+                });
+                $("#monto_minimo_desbloqueo").bind("keydown", function(event) {
+                    if (event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || event.keyCode == 13 || (event.keyCode == 65 && event.ctrlKey === true) || (event.keyCode >= 35 && event.keyCode <= 39)) {
+                        return;
+                    } else {
+                        if (event.shiftKey || (event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105)) {
+                            event.preventDefault();
+                        }
+                    }
+                    });
+                $("#monto_maximo_sobretiempos").bind("keydown", function(event) {
+                    if (event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || event.keyCode == 13 || (event.keyCode == 65 && event.ctrlKey === true) || (event.keyCode >= 35 && event.keyCode <= 39)) {
+                        return;
+                    } else {
+                        if (event.shiftKey || (event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105)) {
+                            event.preventDefault();
+                        }
+                    }
+                });
+                //Valida el submit para rut y dv.
+                $("#formulario").validate({
+                    rules: {
+                        deuda_minima: {
+                            required: true
+                        },
+                        periodo_limite_bloqueo: {
+                            required: true
+                        },
+                        periodo_minimo_mandato: {
+                            required: true
+                        },
+                        numero_maximo_cuotas: {
+                            required: true
+                        },
+                        monto_minimo_desbloqueo: {
+                            required: true
+                        },
+                        monto_maximo_sobretiempos: {
+                            required: true
+                        }
+                    },
+                    messages: {
+                        deuda_minima: {
+                            required: "El campo Deuda minima es obligatorio"
+                        },
+                        periodo_limite_bloqueo: {
+                            required: "El campo periodo limite bloqueo es obligatorio"
+                        },
+                        periodo_minimo_mandato: {
+                            required: "El campo Periodo Minimo Mandato es obligatorio"
+                        },
+                        numero_maximo_cuotas: {
+                            required: "El campo Numero Maximo de Cuotas es obligatorio"
+                        },
+                        monto_minimo_desbloqueo: {
+                            required: "El campo Monto Minimo Desbloqueo es obligatorio"
+                        },
+                        monto_maximo_sobretiempos: {
+                            required: "El campo Valor Máximo de Sobretiempo es obligatorio"
+                        }
+                    }
+                });
+            });
+        </script>
 {% endblock %}
