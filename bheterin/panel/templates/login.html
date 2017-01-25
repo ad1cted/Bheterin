@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
      <!-- Meta, title, CSS, favicons, etc. -->
@@ -43,38 +43,44 @@
 
   <body class="login">
     <div>
-      <a class="hiddenanchor" id="signup"></a>
-      <a class="hiddenanchor" id="signin"></a>
+      <a class="hiddenanchor" id="Registrarse"></a>
+      <a class="hiddenanchor" id="Iniciar Sesión"></a>
 
       <div class="login_wrapper">
         <div class="animate form login_form">
           <section class="login_content">
             <form>
-              <h1>Login Form</h1>
-              <div>
-                <input type="text" class="form-control" placeholder="Username" required="" />
+            <div class="">
+            <h1 style="color: #f2f2f2">Login </h1>
+            </div>
+              <label for="contact-name" class="col-sm-2 control-label" style="color: #f2f2f2">Nombre</label>
+              <div class="col-sm-9">
+              <!--<div>-->
+                <input type="text" class="form-control" placeholder="Nombre de usuario" required="" />
               </div>
-              <div>
-                <input type="password" class="form-control" placeholder="Password" required="" />
+              <label for="contact-email" class="col-sm-2 control-label" style="color: #f2f2f2">email</label>
+              <div class="col-sm-9">
+             <!-- <div>-->
+                <input type="password" class="form-control" placeholder="Contraseña" required="" />
               </div>
-              <div>
+              <div class="col-sm-10">
                 <a class="btn btn-default submit" href="index.html">Log in</a>
-                <a class="reset_pass" href="#">Lost your password?</a>
+                <a class="reset_pass" href="#" style="color: #f2f2f2">¿Olvidaste tu contraseña?</a>
               </div>
 
               <div class="clearfix"></div>
 
               <div class="separator">
-                <p class="change_link">New to site?
-                  <a href="#signup" class="to_register"> Create Account </a>
+                <p class="change_link" style="color: #f2f2f2">¿Nuevo en el sitio?
+                  <a href="#signup" class="to_register"  style="color: #f2f2f2"> Crear cuenta </a>
                 </p>
 
                 <div class="clearfix"></div>
                 <br />
 
                 <div>
-                  <h1><i class="fa fa-paw"></i> Gentelella Alela!</h1>
-                  <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
+                  <h1><i class="fa fa-paw"  style="color: #f2f2f2"></i> Bheterin</h1>
+                  <p style="color: #f2f2f2"">©2017 </p>
                 </div>
               </div>
             </form>
@@ -84,7 +90,7 @@
         <div id="register" class="animate form registration_form">
           <section class="login_content">
             <form>
-              <h1>Create Account</h1>
+              <h1>Crear cuenta</h1>
               <div>
                 <input type="text" class="form-control" placeholder="Username" required="" />
               </div>
@@ -101,16 +107,16 @@
               <div class="clearfix"></div>
 
               <div class="separator">
-                <p class="change_link">Already a member ?
-                  <a href="#signin" class="to_register"> Log in </a>
+                <p class="change_link">¿Ya eres miembro?
+                  <a href="#signin" class="to_register"> Ingresa </a>
                 </p>
 
                 <div class="clearfix"></div>
                 <br />
 
                 <div>
-                  <h1><i class="fa fa-paw"></i> Gentelella Alela!</h1>
-                  <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
+                  <h1><i class="fa fa-paw"></i> Bheterin</h1>
+                  <p>©2017 </p>
                 </div>
               </div>
             </form>
